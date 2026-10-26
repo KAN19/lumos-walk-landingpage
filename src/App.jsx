@@ -1,5 +1,45 @@
 import React, { useState } from 'react';
 
+// Reusable Interactive Scientific Terminology Tooltip
+function SciTerm({ children, title, desc }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <span
+      className={`sci-term-wrapper ${open ? 'is-open' : ''}`}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onClick={(e) => {
+        e.stopPropagation();
+        setOpen((prev) => !prev);
+      }}
+      onFocus={() => setOpen(true)}
+      onBlur={() => setOpen(false)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setOpen((prev) => !prev);
+        } else if (e.key === 'Escape') {
+          setOpen(false);
+        }
+      }}
+      tabIndex={0}
+      role="button"
+      aria-label={`Definition for ${title || children}`}
+    >
+      <span className="sci-term-trigger">{children}</span>
+      {open && (
+        <span className="sci-term-tooltip" role="tooltip">
+          <span className="sci-term-tooltip-title">
+            <span className="sci-term-dot">●</span> {title || children}
+          </span>
+          <span className="sci-term-tooltip-desc">{desc}</span>
+        </span>
+      )}
+    </span>
+  );
+}
+
 const HOURLY_SOLAR_CURVE = [
   { hour: 8, pct: 24, lux: '18,500 lux', cloud: '35% clouds', isPeak: false },
   { hour: 9, pct: 46, lux: '38,000 lux', cloud: '28% clouds', isPeak: false },
@@ -222,7 +262,7 @@ export default function App() {
                 Daylight is medicine that your body cannot synthesize indoors.
               </h2>
               <p className="section-subcopy">
-                Between November and March at latitude 51.7°N (Łódź), daylight drops under 7.5 hours and low-angle winter sun is trapped by dense brick street canyons. Indoor lighting traps our biology in twilight, triggering winter depression (SAD) and freezing downtown street life.
+                Between November and March at latitude 51.7°N (Łódź), daylight drops under 7.5 hours and low-angle winter sun is trapped by dense brick street canyons. Indoor lighting traps our biology in twilight, triggering winter depression (<SciTerm title="SAD (Seasonal Affective Disorder)" desc="A clinically recognized type of major depression that follows a seasonal cycle, driven by biological light deprivation during autumn and winter in high-latitude regions.">SAD</SciTerm>) and freezing downtown street life.
               </p>
             </div>
           </div>
@@ -235,20 +275,20 @@ export default function App() {
                 <span className="science-stat-badge">01 · Biological Gap</span>
                 <div className="science-big-stat solar">500 vs. 90,000</div>
                 <h3 className="card-serif-title" style={{ fontSize: '1.38rem', textWrap: 'balance' }}>
-                  The Indoor Lux Trap
+                  The Indoor <SciTerm title="Lux (lx)" desc="The SI unit of light illuminance (1 lux = 1 lumen per m²). Indoor offices produce only 300–500 lux, while outdoor sunlight delivers 15,000 to over 90,000 lux.">Lux</SciTerm> Trap
                 </h3>
                 <p className="card-body-text" style={{ fontSize: '0.92rem' }}>
-                  Modern offices deliver only <strong>300–500 lux</strong>—biologically perceived by retinal ganglion cells as twilight. Desk-bound 10,000-lux lamps require sitting stationary for 45 minutes, suffering compliance drops below 25%.
+                  Modern offices deliver only <strong><SciTerm title="Lux (lx)" desc="The SI unit of light illuminance. Indoor rooms deliver only 300–500 lux—biologically perceived by the human eye as twilight.">300–500 lux</SciTerm></strong>—biologically perceived by retinal ganglion cells as twilight. Desk-bound 10,000-lux lamps require sitting stationary for 45 minutes, suffering compliance drops below 25%.
                 </p>
               </div>
               <div className="screen-specs-list" style={{ marginTop: 'auto', paddingTop: '16px' }}>
                 <div className="screen-spec-item">
                   <span className="screen-spec-bullet">✓</span>
-                  <span><strong>Outdoor Photons:</strong> Overcast Polish sky provides 15,000–25,000 lux; direct sun reaches 90,000+ lux.</span>
+                  <span><strong><SciTerm title="Outdoor Photons" desc="Natural light particles entering the eye, activating intrinsically photosensitive retinal ganglion cells (ipRGCs) that stimulate alertness in the brain.">Outdoor Photons</SciTerm>:</strong> Overcast Polish sky provides 15,000–25,000 lux; direct sun reaches 90,000+ lux.</span>
                 </div>
                 <div className="screen-spec-item">
                   <span className="screen-spec-bullet">✓</span>
-                  <span><strong>25-Min Walking Dose:</strong> Dynamically suppresses daytime melatonin with 4x higher adherence than light boxes.</span>
+                  <span><strong>25-Min Walking Dose:</strong> Dynamically suppresses daytime <SciTerm title="Melatonin" desc="The body's natural sleep hormone. Bright outdoor daylight (>10,000 lux) rapidly shuts down daytime melatonin secretion, clearing winter brain fog.">melatonin</SciTerm> with 4x higher adherence than light boxes.</span>
                 </div>
               </div>
             </article>
@@ -259,20 +299,20 @@ export default function App() {
                 <span className="science-stat-badge">02 · Emotional Reality</span>
                 <div className="science-big-stat" style={{ color: '#92400e' }}>68% Lethargy</div>
                 <h3 className="card-serif-title" style={{ fontSize: '1.38rem', textWrap: 'balance' }}>
-                  Polish “Szaruga” &amp; Winter Blues
+                  Polish “<SciTerm title="Szaruga (Polish Winter Gray)" desc="A cultural and meteorological term in Poland describing the prolonged, overcast, monochromatic low-light season between November and March.">Szaruga</SciTerm>” &amp; Winter Blues
                 </h3>
                 <p className="card-body-text" style={{ color: '#0f172a', fontSize: '0.92rem' }}>
-                  Sunset arrives at 15:30 in December. Over <strong>68% of Central Europeans</strong> report significant winter fatigue and motivation slumps, with <strong>1 in 5 suffering from Seasonal Affective Disorder</strong>.
+                  Sunset arrives at 15:30 in December. Over <strong>68% of Central Europeans</strong> report significant winter fatigue and motivation slumps, with <strong>1 in 5 suffering from <SciTerm title="SAD (Seasonal Affective Disorder)" desc="Seasonal Affective Disorder is a recurrent seasonal depression caused by inadequate ocular exposure to high-intensity natural daylight.">Seasonal Affective Disorder</SciTerm></strong>.
                 </p>
               </div>
               <div className="screen-specs-list" style={{ marginTop: 'auto', paddingTop: '16px', borderColor: 'rgba(245, 158, 11, 0.4)' }}>
                 <div className="screen-spec-item" style={{ color: '#0f172a' }}>
                   <span className="screen-spec-bullet" style={{ color: '#92400e' }}>✓</span>
-                  <span><strong>Serotonin Synthesis:</strong> Direct sunlight through retinal receptors triggers natural mood regulation.</span>
+                  <span><strong><SciTerm title="Serotonin Synthesis" desc="Serotonin is a key mood-stabilizing neurotransmitter. Retinal daylight signals the hypothalamus and dorsal raphe nucleus to stimulate serotonin release.">Serotonin Synthesis</SciTerm>:</strong> Direct sunlight through retinal receptors triggers natural mood regulation.</span>
                 </div>
                 <div className="screen-spec-item" style={{ color: '#0f172a' }}>
                   <span className="screen-spec-bullet" style={{ color: '#92400e' }}>✓</span>
-                  <span><strong>Circadian Reset:</strong> Stops daytime sleepiness and resets deep, restorative nighttime sleep cycles.</span>
+                  <span><strong><SciTerm title="Circadian Rhythm Reset" desc="The 24-hour internal biological clock regulating sleep-wake cycles, energy, and body temperature. It requires bright morning/midday daylight to stay synchronized.">Circadian Reset</SciTerm>:</strong> Stops daytime sleepiness and resets deep, restorative nighttime sleep cycles.</span>
                 </div>
               </div>
             </article>
@@ -306,8 +346,8 @@ export default function App() {
           <div className="lux-spectrum-card">
             <div className="lux-spectrum-header">
               <div>
-                <div className="lux-spectrum-title">The Photonic Lux Spectrum: Indoor vs. Outdoor Reality</div>
-                <div className="lux-spectrum-subtitle">Why artificial rooms keep your circadian rhythm in biological twilight during winter.</div>
+                <div className="lux-spectrum-title">The Photonic <SciTerm title="Lux (lx)" desc="The SI scientific unit measuring light intensity. 1 lux = 1 lumen per m². Compare 400 lux indoors to 90,000+ lux in direct sun.">Lux</SciTerm> Spectrum: Indoor vs. Outdoor Reality</div>
+                <div className="lux-spectrum-subtitle">Why artificial rooms keep your <SciTerm title="Circadian Rhythm" desc="Your body's master internal clock coordinating cellular regeneration, cortisol levels, and nighttime melatonin production.">circadian rhythm</SciTerm> in biological twilight during winter.</div>
               </div>
               <span style={{ background: '#f59e0b', color: '#0f172a', fontWeight: 800, fontSize: '0.78rem', padding: '6px 14px', borderRadius: '999px' }}>
                 ☀️ LumosWalk Peak: 90,000+ Lux
@@ -319,7 +359,7 @@ export default function App() {
                 <div className="lux-env-name">Indoor Office / Home</div>
                 <div className="lux-env-value">400 Lux</div>
                 <div className="lux-bar-indicator"><div className="lux-bar-fill" style={{ width: '4%' }}></div></div>
-                <div className="lux-env-desc">⚠️ Melatonin remains elevated; brain perceives biological dusk.</div>
+                <div className="lux-env-desc">⚠️ <SciTerm title="Melatonin" desc="Sleep hormone that remains elevated in dim rooms (<500 lux), causing afternoon fatigue.">Melatonin</SciTerm> remains elevated; brain perceives biological dusk.</div>
               </div>
 
               <div className="lux-bar-col">
@@ -340,7 +380,7 @@ export default function App() {
                 <div className="lux-env-name" style={{ color: '#fef08a' }}>LumosWalk Sunlit Corridor</div>
                 <div className="lux-env-value">90,000+ Lux</div>
                 <div className="lux-bar-indicator"><div className="lux-bar-fill" style={{ width: '100%' }}></div></div>
-                <div className="lux-env-desc">☀️ Peak serotonin trigger, natural mood elevation &amp; vitality.</div>
+                <div className="lux-env-desc">☀️ Peak <SciTerm title="Serotonin" desc="Key neurotransmitter regulating mood and emotional resilience, triggered directly by intense outdoor solar photons.">serotonin</SciTerm> trigger, natural mood elevation &amp; vitality.</div>
               </div>
             </div>
           </div>
@@ -361,7 +401,7 @@ export default function App() {
                 into a daily routine.
               </h2>
               <p className="section-subcopy">
-                Now that the health science and local realities are clear, how do we make outdoor sunlight an effortless, rewarding habit in a city of tall shadows? LumosWalk combines 3D shadow raytracing with local café perks.
+                Now that the health science and local realities are clear, how do we make outdoor sunlight an effortless, rewarding habit in a city of tall shadows? LumosWalk combines <SciTerm title="3D Shadow Raytracing" desc="Computer algorithms that model building heights, architectural facades, and solar angles in real time to map sunlight on every sidewalk.">3D shadow raytracing</SciTerm> with local café perks.
               </p>
             </div>
           </div>
@@ -559,7 +599,7 @@ export default function App() {
                 </h3>
                 <p className="card-body-text">
                   Before any map loads: weekly progress, a mutually exclusive
-                  live session banner, and today’s peak windows with Lux and
+                  live session banner, and today’s peak windows with <SciTerm title="Lux (lx)" desc="Scientific measurement of light intensity (10,000 to 92,000 lux outdoors vs. 400 lux indoors).">Lux</SciTerm> and
                   hourly sun instead of noisy weather news.
                 </p>
               </div>
