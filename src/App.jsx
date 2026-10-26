@@ -13,6 +13,13 @@ const HOURLY_SOLAR_CURVE = [
 ];
 
 export default function App() {
+  // Hero Phone Mode: authentic app screenshot vs. live interactive replica
+  const [heroPhoneMode, setHeroPhoneMode] = useState('mockup');
+
+  // App Screenshots Showcase State
+  const [sunnySpotViewMode, setSunnySpotViewMode] = useState('detail'); // 'detail' | 'overview'
+  const [selectedScreenModal, setSelectedScreenModal] = useState(null);
+
   // Bento Section Interactive State
   const [bentoRouteChoice, setBentoRouteChoice] = useState('sunniest');
   const [bentoSpotHour, setBentoSpotHour] = useState(12);
@@ -74,6 +81,85 @@ export default function App() {
   const selectedBriefObj =
     HOURLY_SOLAR_CURVE.find((h) => h.hour === bentoBriefHour) ||
     HOURLY_SOLAR_CURVE[4];
+
+  // Screen Showcase Meta for Detail Inspection
+  const SCREEN_SHOWCASES = {
+    path: {
+      id: 'path',
+      title: 'Sunlight Path Router (A → B)',
+      subtitle: 'Manufaktura → EC1 Łódź · Pedestrian Routing',
+      tag: '3D SHADOW MESH',
+      image: '/screens/screen-path.png',
+      badge: 'Sunniest vs. Shortest',
+      summary:
+        'Calculates pedestrian walking routes optimized for direct sunlight exposure using 3D building shadow raytracing in downtown Łódź.',
+      bullets: [
+        'Compares Sunniest (38 min · 36% sunlit) vs. Shortest (36 min · 15% sunlit).',
+        'Trades just +2 minutes of walking detour for +140% more solar daylight.',
+        'Visualizes real-time extruded 3D building shadow polygons on city streets.'
+      ]
+    },
+    spotsDetail: {
+      id: 'spotsDetail',
+      title: 'Sunny Spot Footprint Detail',
+      subtitle: 'Pasaż Rubinsteina & Promenade · Microclimate Zoom',
+      tag: 'UNSHADED POLYGON',
+      image: '/screens/screen-spot-detail.png',
+      badge: '90% Unshaded Footprint',
+      summary:
+        'Instead of a generic map pin, LumosWalk renders the full unshaded polygonal area footprint with real-time shadow projection and bench availability.',
+      bullets: [
+        'Interactive polygon footprint shows exact sunny zone boundaries until 14:40.',
+        'Displays verified amenity counts: 6 unshaded benches in quiet urban pocket.',
+        'One-tap "Start Soaking in This Area" timer to log stationary sunlight exposure.'
+      ]
+    },
+    spotsOverview: {
+      id: 'spotsOverview',
+      title: 'Sunny Spots City Overview & Scrubber',
+      subtitle: 'Central Łódź · 12 Sunlit Spots at 13:00 Peak',
+      tag: 'HOURLY SCRUBBER',
+      image: '/screens/screen-spots-overview.png',
+      badge: '12 Active Sun Pins',
+      summary:
+        'Explore unshaded spots citywide across Łódź with an interactive time scrubber from 8:00 to 16:00.',
+      bullets: [
+        'Time slider scrubs sunlight across Plac Wolności, Piotrkowska, and EC1.',
+        'Filter spots by current direct sun percentage, walking distance, and benches.',
+        'Dynamic sun status icons update in real time with solar azimuth and cloud cover.'
+      ]
+    },
+    rewards: {
+      id: 'rewards',
+      title: 'Weekly Sunlight Bank & Local Vouchers',
+      subtitle: '3h 27m Accumulated · Łódź Partner Perks',
+      tag: 'HABIT ECONOMICS',
+      image: '/screens/screen-rewards.png',
+      badge: '3h Goal Reached · 115%',
+      summary:
+        'Build a clinically meaningful 3-hour weekly sunlight habit and redeem your verified outdoor minutes for perks at independent Łódź spots.',
+      bullets: [
+        'Weekly bank tracks verified daylight minutes (M · T · W · T · F · S · S).',
+        'Tiered local rewards: Żabka snacks, Drukarz Café (OFF Piotrkowska), and Owoce i Warzywa.',
+        'Unlocks real voucher codes (e.g. 30% off latte with code SUN3H-LODZ).'
+      ]
+    },
+    dashboard: {
+      id: 'dashboard',
+      title: 'Home Solar Microclimate Brief',
+      subtitle: 'LumosWalk Łódź · Live Sunlight Intelligence',
+      tag: 'MAP-FREE HOME',
+      image: '/screens/screen-dashboard.png',
+      badge: '100% Weekly Progress',
+      summary:
+        'A distraction-free home dashboard giving you your solar prescription before any heavy map loads.',
+      bullets: [
+        'Active walking session tracker with live sun percentage and remaining minutes.',
+        'Circular weekly sunlight ring tracking progress toward your 3h 00m goal.',
+        'Today’s solar peak window (11:30–13:30 · 92,000 lux) and quick bento launchers.'
+      ]
+    }
+  };
 
   return (
     <div>
@@ -201,8 +287,47 @@ export default function App() {
             </div>
           </div>
 
-          {/* Right Column: Exact Mobile Phone UI from user's app screenshot */}
-          <div className="phone-showcase-wrap">
+          {/* Right Column: Hero Mobile Showcase with Authentic App Screen Switcher */}
+          <div className="phone-showcase-wrap" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            {/* View Mode Toggle Pill */}
+            <div className="hero-view-toggle">
+              <button
+                type="button"
+                onClick={() => setHeroPhoneMode('mockup')}
+                className={`hero-view-toggle-btn ${heroPhoneMode === 'mockup' ? 'active' : ''}`}
+              >
+                <span>📱 Authentic Screen</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setHeroPhoneMode('interactive')}
+                className={`hero-view-toggle-btn ${heroPhoneMode === 'interactive' ? 'active' : ''}`}
+              >
+                <span>⚡ Interactive UI</span>
+              </button>
+            </div>
+
+            {heroPhoneMode === 'mockup' ? (
+              <div
+                className="phone-mockup-frame"
+                style={{ maxWidth: '375px', margin: '0 auto', cursor: 'pointer' }}
+                onClick={() => setSelectedScreenModal(SCREEN_SHOWCASES.dashboard)}
+              >
+                <div className="phone-corner-tag">LIVE SOLAR DESK</div>
+                <img
+                  src="/screens/screen-dashboard.png"
+                  alt="LumosWalk Production Dashboard"
+                  className="phone-mockup-img"
+                />
+                <div className="phone-zoom-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                  Click to inspect dashboard
+                </div>
+              </div>
+            ) : (
             <div className="editorial-phone">
               <div style={{ padding: '16px 14px 18px', display: 'flex', flexDirection: 'column', gap: '11px' }}>
                 
@@ -553,6 +678,7 @@ export default function App() {
 
               </div>
             </div>
+            )}
           </div>
         </div>
       </section>
@@ -850,12 +976,12 @@ export default function App() {
         </div>
       </section>
 
-      {/* ==================== SECTION 3: APP SCREENSHOTS PLACEHOLDERS ==================== */}
+      {/* ==================== SECTION 3: AUTHENTIC APP SCREENSHOTS SHOWCASE ==================== */}
       <section
         id="app-screenshots"
         className="editorial-section"
         style={{
-          background: 'rgba(245, 158, 11, 0.06)',
+          background: 'rgba(245, 158, 11, 0.05)',
           borderTop: '1px solid rgba(229, 231, 235, 0.8)',
           borderBottom: '1px solid rgba(229, 231, 235, 0.8)'
         }}
@@ -864,129 +990,335 @@ export default function App() {
           <div className="section-header-row">
             <div>
               <div className="eyebrow-solar">
-                APP PREVIEW · DESIGNED FOR MOBILE
+                AUTHENTIC PRODUCT SHOWCASE · BUILT FOR MOBILE
               </div>
               <h2 className="section-serif-heading">
-                Screens from LumosWalk.
+                Real screens from LumosWalk.
               </h2>
               <p className="section-subcopy">
-                Designed for Central European winters — clean, fast, and light-focused. Here is a preview of the core application screens.
+                Explore the actual interface crafted for Central European winters — featuring 3D building shadow raytracing, unshaded polygonal footprints, and the weekly sunlight bank.
               </p>
             </div>
           </div>
 
           <div className="screenshots-gallery-grid">
-            {/* Screenshot 1 Placeholder: Sunlight Path */}
-            <div className="screenshot-placeholder-card">
-              <div className="screenshot-frame-placeholder">
-                <div
-                  style={{
-                    background: '#f59e0b',
-                    padding: '8px 18px',
-                    borderRadius: '999px',
-                    fontWeight: 800,
-                    fontSize: '0.82rem',
-                    color: '#0f172a',
-                    marginBottom: '10px'
-                  }}
-                >
-                  🧭 Screenshot 01
-                </div>
-                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: 700, color: '#0f172a' }}>
-                  Sunlight Path Router
-                </div>
-                <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '6px', textAlign: 'center', padding: '0 20px' }}>
-                  [ App Screenshot Placeholder ]
-                  <br />
-                  3D Shadow Polygons &amp; Route Comparison
+            {/* SCREENSHOT 01: SUNLIGHT PATH ROUTER */}
+            <div className="screenshot-showcase-card">
+              <div
+                className="phone-mockup-frame"
+                onClick={() => setSelectedScreenModal(SCREEN_SHOWCASES.path)}
+              >
+                <div className="phone-corner-tag">3D SHADOW MESH</div>
+                <img
+                  src="/screens/screen-path.png"
+                  alt="Sunlight Path Router - Manufaktura to EC1"
+                  className="phone-mockup-img"
+                />
+                <div className="phone-zoom-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                  Click to inspect full screen
                 </div>
               </div>
+
               <div style={{ padding: '0 4px' }}>
                 <div className="card-num-tag">Screen 01 · A to B Walking</div>
-                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.28rem', fontWeight: 700, marginBottom: '6px' }}>
+                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', fontWeight: 700, marginBottom: '6px', color: '#0f172a' }}>
                   Sunlight Path Router
                 </h3>
-                <p style={{ fontSize: '0.88rem', color: '#64748b', lineHeight: 1.55 }}>
-                  Calculates pedestrian walking routes optimized for direct sunlight exposure using 3D building geometry, comparing Sunniest vs. Shortest routes.
+                <p style={{ fontSize: '0.88rem', color: '#475569', lineHeight: 1.55 }}>
+                  Calculates pedestrian walking routes optimized for direct sun exposure. Compares <strong>Sunniest (38 min · 36% sunlit)</strong> vs. <strong>Shortest (36 min · 15% sunlit)</strong> between Manufaktura and EC1 Łódź.
                 </p>
+
+                <div className="screen-specs-list">
+                  <div className="screen-spec-item">
+                    <span className="screen-spec-bullet">✓</span>
+                    <span><strong>+140% more sun:</strong> Just a 2-minute detour escapes freezing building shadows.</span>
+                  </div>
+                  <div className="screen-spec-item">
+                    <span className="screen-spec-bullet">✓</span>
+                    <span><strong>3D Raytraced Shadows:</strong> Modeled building geometries cast accurate dark polygons onto streets.</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Screenshot 2 Placeholder: Sunny Spots */}
-            <div className="screenshot-placeholder-card">
-              <div className="screenshot-frame-placeholder">
-                <div
-                  style={{
-                    background: '#0e1726',
-                    padding: '8px 18px',
-                    borderRadius: '999px',
-                    fontWeight: 800,
-                    fontSize: '0.82rem',
-                    color: '#f59e0b',
-                    marginBottom: '10px'
-                  }}
+            {/* SCREENSHOT 02: SUNNY SPOTS EXPLORER (WITH SUBTOGGLE: FOOTPRINT DETAIL VS OVERVIEW) */}
+            <div className="screenshot-showcase-card">
+              {/* Interactive View Toggle between Footprint Detail and City Overview */}
+              <div className="screen-subtoggle">
+                <button
+                  type="button"
+                  onClick={() => setSunnySpotViewMode('detail')}
+                  className={`screen-subtoggle-btn ${sunnySpotViewMode === 'detail' ? 'active' : ''}`}
                 >
-                  🕒 Screenshot 02
+                  📍 Footprint Detail
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSunnySpotViewMode('overview')}
+                  className={`screen-subtoggle-btn ${sunnySpotViewMode === 'overview' ? 'active' : ''}`}
+                >
+                  🗺️ 12 Spots City Map
+                </button>
+              </div>
+
+              <div
+                className="phone-mockup-frame"
+                onClick={() =>
+                  setSelectedScreenModal(
+                    sunnySpotViewMode === 'detail'
+                      ? SCREEN_SHOWCASES.spotsDetail
+                      : SCREEN_SHOWCASES.spotsOverview
+                  )
+                }
+              >
+                <div className="phone-corner-tag">
+                  {sunnySpotViewMode === 'detail' ? 'POLYGON FOOTPRINT' : 'TIME SCRUBBER 13:00'}
                 </div>
-                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: 700, color: '#0f172a' }}>
-                  Sunny Spots by Time
-                </div>
-                <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '6px', textAlign: 'center', padding: '0 20px' }}>
-                  [ App Screenshot Placeholder ]
-                  <br />
-                  Time Scrubber &amp; Sunlit Area Footprint
+                <img
+                  src={
+                    sunnySpotViewMode === 'detail'
+                      ? '/screens/screen-spot-detail.png'
+                      : '/screens/screen-spots-overview.png'
+                  }
+                  alt="Sunny Spots Explorer"
+                  className="phone-mockup-img"
+                />
+                <div className="phone-zoom-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                  Click to inspect full screen
                 </div>
               </div>
+
               <div style={{ padding: '0 4px' }}>
                 <div className="card-num-tag gold">Screen 02 · Stationary Soaking</div>
-                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.28rem', fontWeight: 700, marginBottom: '6px' }}>
-                  Sunny Spots Explorer
+                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', fontWeight: 700, marginBottom: '6px', color: '#0f172a' }}>
+                  {sunnySpotViewMode === 'detail'
+                    ? 'Pasaż Rubinsteina Footprint'
+                    : 'Sunny Spots City Overview'}
                 </h3>
-                <p style={{ fontSize: '0.88rem', color: '#64748b', lineHeight: 1.55 }}>
-                  Interactive time-of-day scrubber with GPS locate to find unshaded benches, plazas, and parks at any specific hour in Łódź.
+                <p style={{ fontSize: '0.88rem', color: '#475569', lineHeight: 1.55 }}>
+                  {sunnySpotViewMode === 'detail'
+                    ? 'Not just a vague pin: renders the exact unshaded polygon footprint (90% unshaded until 14:40) with 6 benches and quiet urban pocket scoring.'
+                    : 'Time-of-day scrubber allows moving through 8:00–16:00 to reveal 12 unshaded spots across central Łódź at the 13:00 lunch peak.'}
                 </p>
+
+                <div className="screen-specs-list">
+                  <div className="screen-spec-item">
+                    <span className="screen-spec-bullet">✓</span>
+                    <span><strong>Polygonal Footprint:</strong> See exactly where sunlight warms the pavement and where shadows fall.</span>
+                  </div>
+                  <div className="screen-spec-item">
+                    <span className="screen-spec-bullet">✓</span>
+                    <span><strong>Bench Availability:</strong> 6 unshaded benches located 8 minutes walk from your current GPS position.</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Screenshot 3 Placeholder: Voucher Wallet */}
-            <div className="screenshot-placeholder-card">
-              <div className="screenshot-frame-placeholder">
-                <div
-                  style={{
-                    background: '#fef08a',
-                    border: '1.5px solid #f59e0b',
-                    padding: '8px 18px',
-                    borderRadius: '999px',
-                    fontWeight: 800,
-                    fontSize: '0.82rem',
-                    color: '#0f172a',
-                    marginBottom: '10px'
-                  }}
-                >
-                  ☕ Screenshot 03
-                </div>
-                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: 700, color: '#0f172a' }}>
-                  Weekly Sunlight Bank
-                </div>
-                <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '6px', textAlign: 'center', padding: '0 20px' }}>
-                  [ App Screenshot Placeholder ]
-                  <br />
-                  Weekly Progress &amp; Café Voucher Codes
+            {/* SCREENSHOT 03: WEEKLY SUNLIGHT BANK & REWARDS CATALOG */}
+            <div className="screenshot-showcase-card">
+              <div
+                className="phone-mockup-frame"
+                onClick={() => setSelectedScreenModal(SCREEN_SHOWCASES.rewards)}
+              >
+                <div className="phone-corner-tag">HABIT BANK 3h 27m</div>
+                <img
+                  src="/screens/screen-rewards.png"
+                  alt="Sun Rewards & Weekly Habit Bank"
+                  className="phone-mockup-img"
+                />
+                <div className="phone-zoom-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                  Click to inspect full screen
                 </div>
               </div>
+
               <div style={{ padding: '0 4px' }}>
                 <div className="card-num-tag">Screen 03 · Local Rewards</div>
-                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.28rem', fontWeight: 700, marginBottom: '6px' }}>
-                  Café Voucher Wallet
+                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', fontWeight: 700, marginBottom: '6px', color: '#0f172a' }}>
+                  Weekly Sunlight Bank
                 </h3>
-                <p style={{ fontSize: '0.88rem', color: '#64748b', lineHeight: 1.55 }}>
-                  Accumulate verified sunlight hours toward 2h, 3h, and 5h weekly goals and redeem warm beverage discounts at partner cafés.
+                <p style={{ fontSize: '0.88rem', color: '#475569', lineHeight: 1.55 }}>
+                  Tracks verified outdoor daylight toward the clinical 3-hour weekly threshold. Automatically unlocks vouchers for partner cafés in Łódź.
                 </p>
+
+                <div className="screen-specs-list">
+                  <div className="screen-spec-item">
+                    <span className="screen-spec-bullet">✓</span>
+                    <span><strong>Drukarz Café:</strong> 30% off any warm latte with code <code>SUN3H-LODZ</code> unlocked at 3h.</span>
+                  </div>
+                  <div className="screen-spec-item">
+                    <span className="screen-spec-bullet">✓</span>
+                    <span><strong>Local Partners:</strong> Żabka warm drink claimed, and Owoce i Warzywa tea + roll in progress.</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ==================== LIGHTBOX MODAL FOR SCREENSHOTS ==================== */}
+      {selectedScreenModal && (
+        <div
+          className="lightbox-backdrop"
+          onClick={() => setSelectedScreenModal(null)}
+        >
+          <div
+            className="lightbox-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="lightbox-close-btn"
+              onClick={() => setSelectedScreenModal(null)}
+              aria-label="Close modal"
+            >
+              ×
+            </button>
+
+            {/* Left: Big Phone Device Frame */}
+            <div style={{ maxWidth: '380px', margin: '0 auto', width: '100%' }}>
+              <div className="phone-mockup-frame" style={{ margin: 0 }}>
+                <div className="phone-corner-tag">{selectedScreenModal.tag}</div>
+                <img
+                  src={selectedScreenModal.image}
+                  alt={selectedScreenModal.title}
+                  className="phone-mockup-img"
+                />
+              </div>
+            </div>
+
+            {/* Right: UI/UX Expert Design Rationale & Feature Specs */}
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <span
+                style={{
+                  background: '#fef3c7',
+                  color: '#92400e',
+                  fontWeight: 800,
+                  fontSize: '0.74rem',
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  padding: '4px 10px',
+                  borderRadius: '6px',
+                  display: 'inline-block',
+                  marginBottom: '12px',
+                  alignSelf: 'flex-start'
+                }}
+              >
+                {selectedScreenModal.badge}
+              </span>
+
+              <h2
+                style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '1.95rem',
+                  fontWeight: 700,
+                  color: '#0f172a',
+                  lineHeight: 1.2,
+                  marginBottom: '6px'
+                }}
+              >
+                {selectedScreenModal.title}
+              </h2>
+
+              <div
+                style={{
+                  fontSize: '0.92rem',
+                  fontWeight: 600,
+                  color: '#b45309',
+                  marginBottom: '16px'
+                }}
+              >
+                {selectedScreenModal.subtitle}
+              </div>
+
+              <p
+                style={{
+                  fontSize: '0.96rem',
+                  lineHeight: 1.6,
+                  color: '#475569',
+                  marginBottom: '20px'
+                }}
+              >
+                {selectedScreenModal.summary}
+              </p>
+
+              <div
+                style={{
+                  background: '#f8fafc',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '20px',
+                  padding: '18px',
+                  marginBottom: '24px'
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: '0.76rem',
+                    fontWeight: 800,
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase',
+                    color: '#64748b',
+                    marginBottom: '10px'
+                  }}
+                >
+                  Key Architectural &amp; UX Innovations
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  {selectedScreenModal.bullets.map((b, idx) => (
+                    <div
+                      key={idx}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: '8px',
+                        fontSize: '0.86rem',
+                        color: '#1e293b',
+                        lineHeight: 1.45
+                      }}
+                    >
+                      <span style={{ color: '#f59e0b', fontWeight: 800 }}>•</span>
+                      <span>{b}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: '12px' }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedScreenModal(null);
+                    scrollToWaitlist();
+                  }}
+                  className="pill-btn pill-btn-lg pill-btn-solar"
+                  style={{ flex: 1, textAlign: 'center' }}
+                >
+                  Join the Łódź Pilot
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSelectedScreenModal(null)}
+                  className="pill-btn pill-btn-lg pill-btn-warm-outline"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ==================== SECTION 4: SUSTAINABLE 3-HOUR WEEKLY REWARD TIERS ==================== */}
       <section id="weekly-economics" className="editorial-section">
@@ -1011,37 +1343,37 @@ export default function App() {
           </div>
 
           <div className="bento-3col">
+            {/* Tier 01: 2 hours */}
             <article className="editorial-card surface-white">
               <div>
                 <div className="card-num-tag">Tier 01 · 2 hours / week</div>
                 <h3 className="card-serif-title">
-                  50% off warm winter tea or infusion
+                  Free hot drink or snack at Żabka
                 </h3>
                 <p className="card-body-text">
-                  Four 30-minute sunlit walks across your workweek. Brings
-                  steady afternoon visitors to Piotrkowska cafés during quiet
-                  winter hours.
+                  Four 30-minute sunlit walks across your workweek. Provides quick, accessible motivation right around the corner in every Łódź neighborhood.
                 </p>
               </div>
               <div className="dashed-voucher-pill">
                 <span>
-                  <strong>Drukarz Café</strong> · code <strong>LUMOS2H</strong>
+                  <strong>Żabka Partner Perk</strong> · Claimed at 2h bank
                 </span>
               </div>
             </article>
 
+            {/* Tier 02: 3 hours */}
             <article className="editorial-card surface-gold">
               <div>
                 <div className="card-num-tag">
                   Tier 02 · 3 hours / week (Clinical target)
                 </div>
                 <h3 className="card-serif-title">
-                  Free barista coffee or craft matcha
+                  30% off any warm latte at Drukarz
                 </h3>
                 <p className="card-body-text" style={{ color: '#0f172a' }}>
                   Our core weekly target (~25 mins of verified outdoor daylight
                   per day) proven to combat Winter Blues and Seasonal Affective
-                  Disorder.
+                  Disorder. Redeemed at OFF Piotrkowska.
                 </p>
               </div>
               <div
@@ -1049,28 +1381,27 @@ export default function App() {
                 style={{ borderColor: '#0f172a', background: '#ffffff' }}
               >
                 <span>
-                  <strong>Kawiarnia Ranny Ptaszek</strong> · code{' '}
-                  <strong>SUN3H</strong>
+                  <strong>Drukarz Café (OFF Piotrkowska)</strong> · code{' '}
+                  <strong>SUN3H-LODZ</strong>
                 </span>
               </div>
             </article>
 
+            {/* Tier 03: 4.5+ hours */}
             <article className="editorial-card surface-sand">
               <div>
-                <div className="card-num-tag">Tier 03 · 5 hours / week</div>
+                <div className="card-num-tag">Tier 03 · 4.5 hours / week</div>
                 <h3 className="card-serif-title">
-                  2-for-1 weekend pastry &amp; filter coffee
+                  Cinnamon roll &amp; spiced winter tea
                 </h3>
                 <p className="card-body-text">
-                  Bring a friend outdoors! Encourages social connection and
-                  weekend sunlit strolls through Park Sienkiewicza and
-                  Manufaktura.
+                  Bring a friend outdoors! Encourages weekend sunlit strolls through Park Sienkiewicza and Traugutta Street culture spots.
                 </p>
               </div>
               <div className="dashed-voucher-pill">
                 <span>
-                  <strong>Manufaktura Bakery</strong> · code{' '}
-                  <strong>BRUNCH5H</strong>
+                  <strong>Owoce i Warzywa (Traugutta 9)</strong> · code{' '}
+                  <strong>WINTERTEA</strong>
                 </span>
               </div>
             </article>
