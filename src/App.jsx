@@ -534,10 +534,10 @@ export default function App() {
             {/* Screen 01: Sunlight Path Router */}
             <div className="screenshot-showcase-card">
               <div className="clean-screen-card">
-                <div className="phone-corner-tag">3D SHADOW MESH</div>
+                <div className="phone-corner-tag">13% SUNLIT · +2m SUN</div>
                 <img
                   src="/screens/screen-path.png"
-                  alt="Sunlight Path Router"
+                  alt="Sunlight Path Router - Manufaktura to Plac Wolności"
                   className="clean-screen-img"
                 />
               </div>
@@ -548,17 +548,17 @@ export default function App() {
                   Sunlight Path Router
                 </h3>
                 <p style={{ fontSize: '0.88rem', color: '#475569', lineHeight: 1.55 }}>
-                  Calculates pedestrian walking routes optimized for direct sun exposure. Compares <strong>Sunniest (38 min · 36% sunlit)</strong> vs. <strong>Shortest (36 min · 15% sunlit)</strong> between Manufaktura and EC1 Łódź.
+                  Calculates walking routes optimized for direct sun. Compares <strong>Sunniest (13 min · 0.97 km · 13% sunlit)</strong> vs. <strong>Shortest (12 min · 0.87 km · 7% sunlit)</strong> from Manufaktura to Plac Wolności.
                 </p>
 
                 <div className="screen-specs-list">
                   <div className="screen-spec-item">
                     <span className="screen-spec-bullet">✓</span>
-                    <span><strong>+140% more sun:</strong> Just a 2-minute detour escapes freezing building shadows.</span>
+                    <span><strong>Double Sun Exposure:</strong> Just +1 min walk (+11% detour) adds +2 min of verified sunlight.</span>
                   </div>
                   <div className="screen-spec-item">
                     <span className="screen-spec-bullet">✓</span>
-                    <span><strong>3D Raytraced Shadows:</strong> Modeled building geometries cast accurate dark polygons onto streets.</span>
+                    <span><strong>3D Building Shadows:</strong> Accurately raytraces real-time shadow geometries along urban corridors.</span>
                   </div>
                 </div>
               </div>
@@ -570,7 +570,7 @@ export default function App() {
                 <div className="phone-corner-tag">TIME SCRUBBER · 13:00</div>
                 <img
                   src="/screens/screen-spots-overview.png"
-                  alt="Sunny Spots City Map"
+                  alt="Sunny Spots City Map - 12 Sunlit Spots"
                   className="clean-screen-img"
                 />
               </div>
@@ -581,17 +581,17 @@ export default function App() {
                   Sunny Spots City Map
                 </h3>
                 <p style={{ fontSize: '0.88rem', color: '#475569', lineHeight: 1.55 }}>
-                  Interactive time-of-day scrubber allows moving through 8:00–16:00 to reveal 12 unshaded spots across central Łódź at the 13:00 lunch peak.
+                  Time scrubber (08:00–16:00) highlights 12 active unshaded spots in central Łódź at the 13:00 peak, including Plac Dąbrowskiego (90% sun) and EC1 Łódź.
                 </p>
 
                 <div className="screen-specs-list">
                   <div className="screen-spec-item">
                     <span className="screen-spec-bullet">✓</span>
-                    <span><strong>12 Citywide Pockets:</strong> Real-time unshaded locations across Piotrkowska, Plac Wolności, and EC1.</span>
+                    <span><strong>12 Sunlit Pockets:</strong> Real-time unshaded locations across Plac Dąbrowskiego, EC1, and Piotrkowska.</span>
                   </div>
                   <div className="screen-spec-item">
                     <span className="screen-spec-bullet">✓</span>
-                    <span><strong>Hourly Scrubber:</strong> Plan outdoor lunch breaks around peak direct sun windows.</span>
+                    <span><strong>Distance &amp; Hours:</strong> Shows walking distance (1847m) and clear sun windows (11:15–14:40).</span>
                   </div>
                 </div>
               </div>
@@ -600,7 +600,7 @@ export default function App() {
             {/* Screen 03: Sun Rewards Catalog */}
             <div className="screenshot-showcase-card">
               <div className="clean-screen-card">
-                <div className="phone-corner-tag">SUN BANK · 3h 57m</div>
+                <div className="phone-corner-tag">SUN BANK · 4h 58m</div>
                 <img
                   src="/screens/screen-rewards.png"
                   alt="Sun Rewards Catalog"
@@ -614,7 +614,7 @@ export default function App() {
                   Sun Rewards Catalog
                 </h3>
                 <p style={{ fontSize: '0.88rem', color: '#475569', lineHeight: 1.55 }}>
-                  Tracks verified outdoor daylight toward the clinical 3-hour weekly threshold. Automatically unlocks vouchers for partner cafés in Łódź.
+                  Tracks verified daylight (4h 58m / 298 mins accumulated) toward the clinical 3-hour weekly goal. Automatically unlocks vouchers across Łódź.
                 </p>
 
                 <div className="screen-specs-list">
