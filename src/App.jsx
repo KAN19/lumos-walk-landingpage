@@ -86,12 +86,12 @@ export default function App() {
               height="22"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
+              stroke="#f59e0b"
               strokeWidth="2.1"
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <circle cx="12" cy="12" r="4.5" fill="currentColor" />
+              <circle cx="12" cy="12" r="4.5" fill="#f59e0b" />
               <line x1="12" y1="2" x2="12" y2="4.5" />
               <line x1="12" y1="19.5" x2="12" y2="22" />
               <line x1="4.93" y1="4.93" x2="6.7" y2="6.7" />
@@ -123,7 +123,7 @@ export default function App() {
             <button
               type="button"
               onClick={scrollToWaitlist}
-              className="pill-btn pill-btn-sm pill-btn-espresso"
+              className="pill-btn pill-btn-sm pill-btn-solar"
             >
               Join waitlist
             </button>
@@ -136,7 +136,7 @@ export default function App() {
         <div className="container hero-grid">
           {/* Left Column: Editorial Headline + Łódź Winter Prescription */}
           <div>
-            <div className="eyebrow-orange">
+            <div className="eyebrow-solar">
               YOUR DIGITAL PRESCRIPTION FOR WINTER SUNLIGHT · ŁÓDŹ
             </div>
 
@@ -160,7 +160,7 @@ export default function App() {
               <button
                 type="button"
                 onClick={scrollToWaitlist}
-                className="pill-btn pill-btn-lg pill-btn-orange"
+                className="pill-btn pill-btn-lg pill-btn-solar"
               >
                 Join in the waitlist
               </button>
@@ -403,7 +403,7 @@ export default function App() {
                       <div style={{ fontSize: '0.68rem', color: '#713f12' }}>13:00</div>
                       <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#854d0e' }}>☀️ 85%</div>
                     </div>
-                    <div style={{ background: '#fef08a', border: '2px solid #eab308', borderRadius: '14px', padding: '5px 2px' }}>
+                    <div style={{ background: '#fef08a', border: '2px solid #f59e0b', borderRadius: '14px', padding: '5px 2px' }}>
                       <div style={{ fontSize: '0.68rem', fontWeight: 700, color: '#713f12' }}>14:00</div>
                       <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#713f12' }}>🌤️ 65%</div>
                     </div>
@@ -421,8 +421,8 @@ export default function App() {
                       background: '#ffffff',
                       borderRadius: '24px',
                       padding: '14px',
-                      border: '2px solid #facc15',
-                      boxShadow: '0 4px 12px rgba(250, 204, 21, 0.15)'
+                      border: '2px solid #f59e0b',
+                      boxShadow: '0 4px 12px rgba(245, 158, 11, 0.15)'
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
@@ -562,7 +562,7 @@ export default function App() {
         <div className="container">
           <div className="section-header-row">
             <div>
-              <div className="eyebrow-orange">
+              <div className="eyebrow-solar">
                 BUILT FOR CENTRAL EUROPEAN WINTERS (SZARUGA)
               </div>
               <h2 className="section-serif-heading">
@@ -600,7 +600,7 @@ export default function App() {
                     <div
                       style={{
                         fontSize: '0.96rem',
-                        fontWeight: 700,
+                        fontWeight: 800,
                         marginBottom: '4px'
                       }}
                     >
@@ -669,7 +669,7 @@ export default function App() {
                   }}
                 >
                   <span>{String(bentoSpotHour).padStart(2, '0')}:00</span>
-                  <span style={{ color: '#f4b62a', fontWeight: 600 }}>
+                  <span style={{ color: '#f59e0b', fontWeight: 700 }}>
                     {bentoDirectSun}% direct sun
                   </span>
                 </div>
@@ -683,7 +683,7 @@ export default function App() {
                   onChange={(e) => setBentoSpotHour(Number(e.target.value))}
                   className="navy-range-slider"
                   style={{
-                    background: `linear-gradient(to right, #f4b62a 0%, #f4b62a ${bentoSliderPct}%, #283142 ${bentoSliderPct}%, #283142 100%)`
+                    background: `linear-gradient(to right, #f59e0b 0%, #f59e0b ${bentoSliderPct}%, #283142 ${bentoSliderPct}%, #283142 100%)`
                   }}
                   aria-label="Scrub time of day"
                 />
@@ -702,7 +702,7 @@ export default function App() {
                     style={{
                       width: `${bentoDirectSun}%`,
                       height: '100%',
-                      background: '#f4b62a',
+                      background: '#f59e0b',
                       borderRadius: '999px',
                       transition: 'width 0.2s ease'
                     }}
@@ -716,7 +716,7 @@ export default function App() {
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   fontSize: '0.86rem',
-                  color: '#b2bccb'
+                  color: '#94a3b8'
                 }}
               >
                 <span>
@@ -809,8 +809,8 @@ export default function App() {
                           borderRadius: '8px',
                           background:
                             item.isPeak || bentoBriefHour === item.hour
-                              ? '#df6e00'
-                              : 'rgba(223, 110, 0, 0.25)',
+                              ? '#f59e0b'
+                              : 'rgba(245, 158, 11, 0.28)',
                           transition: 'all 0.2s ease'
                         }}
                       />
@@ -833,14 +833,14 @@ export default function App() {
                     justifyContent: 'space-between',
                     fontSize: '0.88rem',
                     fontWeight: 600,
-                    color: '#23170b'
+                    color: '#0f172a'
                   }}
                 >
                   <span>
                     Peak 11:30–13:30 · {selectedBriefObj.lux} (
                     {selectedBriefObj.cloud})
                   </span>
-                  <span style={{ color: '#df6e00' }}>
+                  <span style={{ color: '#b45309', fontWeight: 700 }}>
                     {selectedBriefObj.hour}:00 selected
                   </span>
                 </div>
@@ -855,15 +855,15 @@ export default function App() {
         id="app-screenshots"
         className="editorial-section"
         style={{
-          background: 'rgba(243, 230, 204, 0.45)',
-          borderTop: '1px solid rgba(228, 217, 198, 0.7)',
-          borderBottom: '1px solid rgba(228, 217, 198, 0.7)'
+          background: 'rgba(245, 158, 11, 0.06)',
+          borderTop: '1px solid rgba(229, 231, 235, 0.8)',
+          borderBottom: '1px solid rgba(229, 231, 235, 0.8)'
         }}
       >
         <div className="container">
           <div className="section-header-row">
             <div>
-              <div className="eyebrow-orange">
+              <div className="eyebrow-solar">
                 APP PREVIEW · DESIGNED FOR MOBILE
               </div>
               <h2 className="section-serif-heading">
@@ -881,21 +881,21 @@ export default function App() {
               <div className="screenshot-frame-placeholder">
                 <div
                   style={{
-                    background: '#f4c842',
+                    background: '#f59e0b',
                     padding: '8px 18px',
                     borderRadius: '999px',
                     fontWeight: 800,
                     fontSize: '0.82rem',
-                    color: '#23170b',
+                    color: '#0f172a',
                     marginBottom: '10px'
                   }}
                 >
                   🧭 Screenshot 01
                 </div>
-                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: 700, color: '#23170b' }}>
+                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: 700, color: '#0f172a' }}>
                   Sunlight Path Router
                 </div>
-                <div style={{ fontSize: '0.8rem', color: '#6b5b4d', marginTop: '6px', textAlign: 'center', padding: '0 20px' }}>
+                <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '6px', textAlign: 'center', padding: '0 20px' }}>
                   [ App Screenshot Placeholder ]
                   <br />
                   3D Shadow Polygons &amp; Route Comparison
@@ -906,7 +906,7 @@ export default function App() {
                 <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.28rem', fontWeight: 700, marginBottom: '6px' }}>
                   Sunlight Path Router
                 </h3>
-                <p style={{ fontSize: '0.88rem', color: '#6b5b4d', lineHeight: 1.55 }}>
+                <p style={{ fontSize: '0.88rem', color: '#64748b', lineHeight: 1.55 }}>
                   Calculates pedestrian walking routes optimized for direct sunlight exposure using 3D building geometry, comparing Sunniest vs. Shortest routes.
                 </p>
               </div>
@@ -917,21 +917,21 @@ export default function App() {
               <div className="screenshot-frame-placeholder">
                 <div
                   style={{
-                    background: '#111826',
+                    background: '#0e1726',
                     padding: '8px 18px',
                     borderRadius: '999px',
                     fontWeight: 800,
                     fontSize: '0.82rem',
-                    color: '#f4b62a',
+                    color: '#f59e0b',
                     marginBottom: '10px'
                   }}
                 >
                   🕒 Screenshot 02
                 </div>
-                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: 700, color: '#23170b' }}>
+                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: 700, color: '#0f172a' }}>
                   Sunny Spots by Time
                 </div>
-                <div style={{ fontSize: '0.8rem', color: '#6b5b4d', marginTop: '6px', textAlign: 'center', padding: '0 20px' }}>
+                <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '6px', textAlign: 'center', padding: '0 20px' }}>
                   [ App Screenshot Placeholder ]
                   <br />
                   Time Scrubber &amp; Sunlit Area Footprint
@@ -942,7 +942,7 @@ export default function App() {
                 <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.28rem', fontWeight: 700, marginBottom: '6px' }}>
                   Sunny Spots Explorer
                 </h3>
-                <p style={{ fontSize: '0.88rem', color: '#6b5b4d', lineHeight: 1.55 }}>
+                <p style={{ fontSize: '0.88rem', color: '#64748b', lineHeight: 1.55 }}>
                   Interactive time-of-day scrubber with GPS locate to find unshaded benches, plazas, and parks at any specific hour in Łódź.
                 </p>
               </div>
@@ -953,21 +953,22 @@ export default function App() {
               <div className="screenshot-frame-placeholder">
                 <div
                   style={{
-                    background: '#df6e00',
+                    background: '#fef08a',
+                    border: '1.5px solid #f59e0b',
                     padding: '8px 18px',
                     borderRadius: '999px',
                     fontWeight: 800,
                     fontSize: '0.82rem',
-                    color: '#ffffff',
+                    color: '#0f172a',
                     marginBottom: '10px'
                   }}
                 >
                   ☕ Screenshot 03
                 </div>
-                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: 700, color: '#23170b' }}>
+                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: 700, color: '#0f172a' }}>
                   Weekly Sunlight Bank
                 </div>
-                <div style={{ fontSize: '0.8rem', color: '#6b5b4d', marginTop: '6px', textAlign: 'center', padding: '0 20px' }}>
+                <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '6px', textAlign: 'center', padding: '0 20px' }}>
                   [ App Screenshot Placeholder ]
                   <br />
                   Weekly Progress &amp; Café Voucher Codes
@@ -978,7 +979,7 @@ export default function App() {
                 <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.28rem', fontWeight: 700, marginBottom: '6px' }}>
                   Café Voucher Wallet
                 </h3>
-                <p style={{ fontSize: '0.88rem', color: '#6b5b4d', lineHeight: 1.55 }}>
+                <p style={{ fontSize: '0.88rem', color: '#64748b', lineHeight: 1.55 }}>
                   Accumulate verified sunlight hours toward 2h, 3h, and 5h weekly goals and redeem warm beverage discounts at partner cafés.
                 </p>
               </div>
@@ -992,7 +993,7 @@ export default function App() {
         <div className="container">
           <div className="section-header-row">
             <div>
-              <div className="eyebrow-orange">
+              <div className="eyebrow-solar">
                 HABIT ECONOMICS · WHY 15 MINUTES IS NOT ENOUGH
               </div>
               <h2 className="section-serif-heading">
@@ -1031,13 +1032,13 @@ export default function App() {
 
             <article className="editorial-card surface-gold">
               <div>
-                <div className="card-num-tag espresso">
+                <div className="card-num-tag">
                   Tier 02 · 3 hours / week (Clinical target)
                 </div>
                 <h3 className="card-serif-title">
                   Free barista coffee or craft matcha
                 </h3>
-                <p className="card-body-text espresso-muted">
+                <p className="card-body-text" style={{ color: '#0f172a' }}>
                   Our core weekly target (~25 mins of verified outdoor daylight
                   per day) proven to combat Winter Blues and Seasonal Affective
                   Disorder.
@@ -1045,7 +1046,7 @@ export default function App() {
               </div>
               <div
                 className="dashed-voucher-pill"
-                style={{ borderColor: '#23170b' }}
+                style={{ borderColor: '#0f172a', background: '#ffffff' }}
               >
                 <span>
                   <strong>Kawiarnia Ranny Ptaszek</strong> · code{' '}
@@ -1111,10 +1112,10 @@ export default function App() {
         </div>
       </section>
 
-      {/* ==================== SECTION 6: BURNT-ORANGE WAITLIST BANNER ==================== */}
+      {/* ==================== SECTION 6: APP-MATCHED MIDNIGHT NAVY & SOLAR WAITLIST BANNER ==================== */}
       <section id="waitlist" className="cta-banner-wrap">
         <div className="container">
-          <div className="cta-burnt-orange-card">
+          <div className="cta-navy-card">
             <h2
               style={{
                 fontFamily: 'var(--font-serif)',
@@ -1124,12 +1125,12 @@ export default function App() {
                 marginBottom: '10px'
               }}
             >
-              Chase the light this week.
+              Chase the <span style={{ color: '#f59e0b', fontStyle: 'italic' }}>light</span> this week.
             </h2>
             <p
               style={{
                 fontSize: '1.06rem',
-                color: 'rgba(255, 253, 249, 0.92)'
+                color: '#94a3b8'
               }}
             >
               Be first to try LumosWalk in Łódź — or partner your local café.
@@ -1140,12 +1141,12 @@ export default function App() {
                 style={{
                   display: 'inline-block',
                   marginTop: '28px',
-                  background: '#23170b',
-                  color: '#fffdf9',
+                  background: '#f59e0b',
+                  color: '#0f172a',
                   padding: '16px 30px',
                   borderRadius: '999px',
                   fontSize: '0.96rem',
-                  fontWeight: 600
+                  fontWeight: 700
                 }}
               >
                 ✓ You’re on the Łódź pilot list — see you on the sunny side!
@@ -1165,7 +1166,7 @@ export default function App() {
                 />
                 <button
                   type="submit"
-                  className="pill-btn pill-btn-lg pill-btn-espresso"
+                  className="pill-btn pill-btn-lg pill-btn-solar"
                 >
                   Join
                 </button>
