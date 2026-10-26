@@ -289,34 +289,16 @@ a {
 }
 
 .editorial-phone {
-  width: 356px;
-  height: 704px;
+  width: 366px;
+  min-height: 720px;
   border-radius: 44px;
-  background: var(--bg-cream);
-  border: 9px solid #2b1d10;
-  box-shadow: 0 32px 72px rgba(65, 38, 8, 0.22);
+  background: #fbf6eb;
+  border: 9px solid #1a1612;
+  box-shadow: 0 32px 76px rgba(65, 38, 8, 0.22);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   position: relative;
-}
-
-.phone-top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 20px 8px;
-  font-size: 0.74rem;
-  font-weight: 600;
-  color: var(--text-taupe);
-}
-
-.warm-map-grid {
-  background-color: #f3ead8;
-  background-image:
-    linear-gradient(to right, rgba(138, 121, 104, 0.14) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(138, 121, 104, 0.14) 1px, transparent 1px);
-  background-size: 26px 26px;
 }
 
 /* ==================== SECTIONS & EDITORIAL BENTO CARDS ==================== */
@@ -540,53 +522,127 @@ a {
   background: #fef6e6;
 }
 
-/* Interactive Walkthrough Layout */
-.walkthrough-split {
+/* ==================== APP SCREENSHOTS GALLERY (PLACEHOLDERS) ==================== */
+.screenshots-gallery-grid {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 44px;
-  align-items: start;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
 }
 
-.walkthrough-selector-card {
+.screenshot-placeholder-card {
+  background: var(--bg-card-white);
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: 0 20px 48px rgba(155, 110, 45, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.screenshot-placeholder-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 58px rgba(155, 110, 45, 0.12);
+}
+
+.screenshot-frame-placeholder {
   width: 100%;
-  text-align: left;
-  border-radius: 26px;
-  padding: 26px 28px;
-  background: rgba(255, 253, 249, 0.65);
-  border: 1.5px solid transparent;
-  transition: all 0.18s ease;
+  aspect-ratio: 9 / 16;
+  border-radius: 22px;
+  background: #fbf6ec;
+  border: 2px dashed #d8caa5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
-.walkthrough-selector-card:hover {
-  background: var(--bg-card-white);
+/* ==================== SECTION: STEP INTO THE SUN IN LODZ TODAY ==================== */
+.step-lodz-card {
+  background: #ffffff;
+  border-radius: 36px;
+  padding: 64px 36px;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(155, 110, 45, 0.09);
+  border: 1px solid rgba(228, 217, 198, 0.7);
+  max-width: 860px;
+  margin: 0 auto;
 }
 
-.walkthrough-selector-card.selected {
-  background: var(--bg-card-white);
-  border-color: var(--accent-orange);
-  box-shadow: 0 20px 48px rgba(155, 110, 45, 0.1);
+.step-lodz-badge {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 6px 14px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
-/* GPS Pulse Animation */
-@keyframes warmPulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.75;
-  }
-  100% {
-    transform: scale(2.4);
-    opacity: 0;
-  }
+.step-lodz-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.3rem, 4vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: #111827;
+  margin-bottom: 16px;
 }
 
-.gps-pulse-ring {
-  position: absolute;
-  width: 28px;
-  height: 28px;
+.step-lodz-subcopy {
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: #475569;
+  max-width: 600px;
+  margin: 0 auto 36px;
+}
+
+.step-lodz-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.btn-waitlist-lodz {
+  width: 100%;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 16px 28px;
   border-radius: 999px;
-  background: rgba(223, 110, 0, 0.32);
-  animation: warmPulse 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  transition: transform 0.18s ease, background-color 0.18s ease;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+}
+
+.btn-waitlist-lodz:hover {
+  background: #1e293b;
+  transform: translateY(-1px);
+}
+
+.btn-partner-lodz {
+  width: 100%;
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+  font-size: 0.96rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 999px;
+  transition: background-color 0.18s ease;
+}
+
+.btn-partner-lodz:hover {
+  background: #f8fafc;
 }
 
 /* Bottom Burnt-Orange CTA Banner */
@@ -632,7 +688,7 @@ a {
   .hero-grid,
   .bento-2x2,
   .bento-3col,
-  .walkthrough-split {
+  .screenshots-gallery-grid {
     grid-template-columns: 1fr;
   }
   .nav-links-row {
