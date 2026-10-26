@@ -534,7 +534,6 @@ export default function App() {
             {/* Screen 01: Sunlight Path Router */}
             <div className="screenshot-showcase-card">
               <div className="clean-screen-card">
-                <div className="phone-corner-tag">13% SUNLIT · +2m SUN</div>
                 <img
                   src="/screens/screen-path.png"
                   alt="Sunlight Path Router - Manufaktura to Plac Wolności"
@@ -567,7 +566,6 @@ export default function App() {
             {/* Screen 02: Sunny Spots City Map */}
             <div className="screenshot-showcase-card">
               <div className="clean-screen-card">
-                <div className="phone-corner-tag">TIME SCRUBBER · 13:00</div>
                 <img
                   src="/screens/screen-spots-overview.png"
                   alt="Sunny Spots City Map - 12 Sunlit Spots"
@@ -600,7 +598,6 @@ export default function App() {
             {/* Screen 03: Sun Rewards Catalog */}
             <div className="screenshot-showcase-card">
               <div className="clean-screen-card">
-                <div className="phone-corner-tag">SUN BANK · 4h 58m</div>
                 <img
                   src="/screens/screen-rewards.png"
                   alt="Sun Rewards Catalog"
