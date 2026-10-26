@@ -106,9 +106,9 @@ export default function App() {
           </a>
 
           <nav className="nav-links-row">
-            <a href="#four-ways">Four Core Pillars</a>
-            <a href="#app-screenshots">App Screens</a>
-            <a href="#weekly-economics">3h Weekly Rewards</a>
+            <a href="#health-science">Science &amp; Health</a>
+            <a href="#four-ways">Four Tools</a>
+            <a href="#app-screenshots">App Showcase</a>
             <a href="#lodz-pilot">Łódź Pilot</a>
           </nav>
 
@@ -175,27 +175,27 @@ export default function App() {
 
             {/* 3 Quick Editorial Feature Jumpers */}
             <div className="hero-pillars-strip">
+              <a href="#health-science" className="hero-mini-card">
+                <div className="hero-mini-num">01 · Science &amp; Health</div>
+                <div className="hero-mini-title">Winter Lux Deficit</div>
+                <div className="hero-mini-meta">
+                  500 vs. 90,000 lux &amp; SAD data
+                </div>
+              </a>
+
               <a href="#four-ways" className="hero-mini-card">
-                <div className="hero-mini-num">01 · A to B Router</div>
+                <div className="hero-mini-num">02 · Four Core Tools</div>
                 <div className="hero-mini-title">Sunlight Path</div>
                 <div className="hero-mini-meta">
-                  87% sunniest vs. 34% shortest walk
+                  3D shadow routing &amp; time scrubber
                 </div>
               </a>
 
-              <a href="#four-ways" className="hero-mini-card">
-                <div className="hero-mini-num">02 · Time Scrubber</div>
-                <div className="hero-mini-title">Sunny Spots</div>
+              <a href="#app-screenshots" className="hero-mini-card">
+                <div className="hero-mini-num">03 · Mobile Preview</div>
+                <div className="hero-mini-title">Real App Screens</div>
                 <div className="hero-mini-meta">
-                  Nearby GPS pins → whole sunlit area
-                </div>
-              </a>
-
-              <a href="#weekly-economics" className="hero-mini-card">
-                <div className="hero-mini-num">03 · Weekly Bank</div>
-                <div className="hero-mini-title">3h Café Perks</div>
-                <div className="hero-mini-meta">
-                  Verified minutes → Łódź cafe codes
+                  Navigation, map pins &amp; 3h rewards
                 </div>
               </a>
             </div>
@@ -212,23 +212,160 @@ export default function App() {
         </div>
       </section>
 
+      {/* ==================== SECTION 2: THE WINTER SUNLIGHT DEFICIT (SCIENCE & HEALTH) ==================== */}
+      <section id="health-science" className="editorial-section" style={{ background: '#ffffff', borderBottom: '1px solid rgba(229, 231, 235, 0.8)' }}>
+        <div className="container">
+          <div className="section-header-row">
+            <div>
+              <div className="eyebrow-solar">
+                CLINICAL EVIDENCE · MENTAL HEALTH · URBAN COMMERCE
+              </div>
+              <h2 className="section-serif-heading">
+                Daylight is medicine your body
+                <br />
+                cannot synthesize indoors.
+              </h2>
+              <p className="section-subcopy">
+                Between November and March at latitude 51.7°N (Łódź), daylight drops under 7.5 hours and low-angle winter sun is trapped by dense brick street canyons. Indoor lighting traps our biology in twilight, triggering winter depression (SAD) and freezing downtown street life.
+              </p>
+            </div>
+          </div>
+
+          {/* 3 Evidence Pillars Grid */}
+          <div className="bento-3col">
+            {/* Pillar 01: Biological Lux Deficit */}
+            <article className="editorial-card surface-white">
+              <div>
+                <span className="science-stat-badge">01 · Biological Gap</span>
+                <div className="science-big-stat solar">500 vs. 90,000</div>
+                <h3 className="card-serif-title" style={{ fontSize: '1.42rem' }}>
+                  The Indoor Lux Trap
+                </h3>
+                <p className="card-body-text" style={{ fontSize: '0.92rem' }}>
+                  Modern offices deliver only <strong>300–500 lux</strong>—biologically perceived by retinal ganglion cells as twilight. Desk-bound 10,000-lux lamps require sitting stationary for 45 minutes, suffering compliance drops below 25%.
+                </p>
+              </div>
+              <div className="screen-specs-list" style={{ marginTop: 'auto', paddingTop: '16px' }}>
+                <div className="screen-spec-item">
+                  <span className="screen-spec-bullet">✓</span>
+                  <span><strong>Outdoor Photons:</strong> Overcast Polish sky provides 15,000–25,000 lux; direct sun reaches 90,000+ lux.</span>
+                </div>
+                <div className="screen-spec-item">
+                  <span className="screen-spec-bullet">✓</span>
+                  <span><strong>25-Min Walking Dose:</strong> Dynamically suppresses daytime melatonin with 4x higher adherence than light boxes.</span>
+                </div>
+              </div>
+            </article>
+
+            {/* Pillar 02: Polish Szaruga & SAD */}
+            <article className="editorial-card surface-gold">
+              <div>
+                <span className="science-stat-badge">02 · Emotional Reality</span>
+                <div className="science-big-stat" style={{ color: '#92400e' }}>68% Lethargy</div>
+                <h3 className="card-serif-title" style={{ fontSize: '1.42rem' }}>
+                  The Polish “Szaruga” &amp; SAD
+                </h3>
+                <p className="card-body-text" style={{ color: '#0f172a', fontSize: '0.92rem' }}>
+                  Sunset arrives at 15:30 in December. Over <strong>68% of Central Europeans</strong> report significant winter fatigue and motivation slumps, with <strong>1 in 5 suffering from Seasonal Affective Disorder</strong>.
+                </p>
+              </div>
+              <div className="screen-specs-list" style={{ marginTop: 'auto', paddingTop: '16px', borderColor: 'rgba(245, 158, 11, 0.4)' }}>
+                <div className="screen-spec-item" style={{ color: '#0f172a' }}>
+                  <span className="screen-spec-bullet" style={{ color: '#92400e' }}>✓</span>
+                  <span><strong>Serotonin Synthesis:</strong> Direct sunlight through retinal receptors triggers natural mood regulation.</span>
+                </div>
+                <div className="screen-spec-item" style={{ color: '#0f172a' }}>
+                  <span className="screen-spec-bullet" style={{ color: '#92400e' }}>✓</span>
+                  <span><strong>Circadian Reset:</strong> Stops daytime sleepiness and resets deep, restorative nighttime sleep cycles.</span>
+                </div>
+              </div>
+            </article>
+
+            {/* Pillar 03: Local Storefront Slump */}
+            <article className="editorial-card surface-sand">
+              <div>
+                <span className="science-stat-badge">03 · Urban Foot Traffic</span>
+                <div className="science-big-stat" style={{ color: '#b45309' }}>-45% Drop</div>
+                <h3 className="card-serif-title" style={{ fontSize: '1.42rem' }}>
+                  The Winter High-Street Slump
+                </h3>
+                <p className="card-body-text" style={{ fontSize: '0.92rem' }}>
+                  When darkness sets in, pedestrian foot traffic along downtown arteries like Piotrkowska drops by nearly half. Citizens rush between cars and heated rooms, creating severe midday revenue slumps for local cafés and bakeries.
+                </p>
+              </div>
+              <div className="screen-specs-list" style={{ marginTop: 'auto', paddingTop: '16px' }}>
+                <div className="screen-spec-item">
+                  <span className="screen-spec-bullet">✓</span>
+                  <span><strong>Civic Flywheel:</strong> Guiding citizens through sunlit streets brings active pedestrian life back outside.</span>
+                </div>
+                <div className="screen-spec-item">
+                  <span className="screen-spec-bullet">✓</span>
+                  <span><strong>Local Storefronts:</strong> Connects daylight walks directly with partner cafés (Żabka, Drukarz, Owoce i Warzywa).</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          {/* Photonic Lux Comparison Gauge */}
+          <div className="lux-spectrum-card">
+            <div className="lux-spectrum-header">
+              <div>
+                <div className="lux-spectrum-title">The Photonic Lux Spectrum: Indoor vs. Outdoor Reality</div>
+                <div className="lux-spectrum-subtitle">Why artificial rooms keep your circadian rhythm in biological twilight during winter.</div>
+              </div>
+              <span style={{ background: '#f59e0b', color: '#0f172a', fontWeight: 800, fontSize: '0.78rem', padding: '6px 14px', borderRadius: '999px' }}>
+                ☀️ LumosWalk Peak: 90,000+ Lux
+              </span>
+            </div>
+
+            <div className="lux-bars-grid">
+              <div className="lux-bar-col">
+                <div className="lux-env-name">Indoor Office / Home</div>
+                <div className="lux-env-value">400 Lux</div>
+                <div className="lux-bar-indicator"><div className="lux-bar-fill" style={{ width: '4%' }}></div></div>
+                <div className="lux-env-desc">⚠️ Melatonin remains elevated; brain perceives biological dusk.</div>
+              </div>
+
+              <div className="lux-bar-col">
+                <div className="lux-env-name">Desk Light Box (10,000k)</div>
+                <div className="lux-env-value">10,000 Lux</div>
+                <div className="lux-bar-indicator"><div className="lux-bar-fill" style={{ width: '18%' }}></div></div>
+                <div className="lux-env-desc">Stationary, tethered to desk; &lt;25% patient compliance by week 3.</div>
+              </div>
+
+              <div className="lux-bar-col">
+                <div className="lux-env-name">Overcast Winter Sky (Łódź)</div>
+                <div className="lux-env-value">22,000 Lux</div>
+                <div className="lux-bar-indicator"><div className="lux-bar-fill" style={{ width: '38%' }}></div></div>
+                <div className="lux-env-desc">Full-sky diffusion; baseline circadian activation achieved.</div>
+              </div>
+
+              <div className="lux-bar-col highlight-col">
+                <div className="lux-env-name" style={{ color: '#fef08a' }}>LumosWalk Sunlit Corridor</div>
+                <div className="lux-env-value">90,000+ Lux</div>
+                <div className="lux-bar-indicator"><div className="lux-bar-fill" style={{ width: '100%' }}></div></div>
+                <div className="lux-env-desc">☀️ Peak serotonin trigger, natural mood elevation &amp; vitality.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ==================== SECTION 2: FOUR WAYS EDITORIAL BENTO GRID ==================== */}
       <section id="four-ways" className="editorial-section">
         <div className="container">
           <div className="section-header-row">
             <div>
               <div className="eyebrow-solar">
-                BUILT FOR CENTRAL EUROPEAN WINTERS (SZARUGA)
+                FROM SCIENCE TO DAILY HABIT · FOUR CORE TOOLS
               </div>
               <h2 className="section-serif-heading">
-                Four ways to get more sun,
+                Four ways to turn scarce light
                 <br />
-                every day.
+                into a daily routine.
               </h2>
               <p className="section-subcopy">
-                From November to March in Poland, daylight drops below 8 hours
-                and urban canyons block low-angle light. Here is how LumosWalk
-                turns scarce winter photons into a daily habit.
+                Now that the health science and local realities are clear, how do we make outdoor sunlight an effortless, rewarding habit in a city of tall shadows? LumosWalk combines 3D shadow raytracing with local café perks.
               </p>
             </div>
           </div>
@@ -626,93 +763,6 @@ export default function App() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== SECTION 4: SUSTAINABLE 3-HOUR WEEKLY REWARD TIERS ==================== */}
-      <section id="weekly-economics" className="editorial-section">
-        <div className="container">
-          <div className="section-header-row">
-            <div>
-              <div className="eyebrow-solar">
-                HABIT ECONOMICS · WHY 15 MINUTES IS NOT ENOUGH
-              </div>
-              <h2 className="section-serif-heading">
-                Built for weekly habits —
-                <br />
-                not 15-minute gimmicks.
-              </h2>
-              <p className="section-subcopy">
-                Clinicians recommend 2 to 3 hours of outdoor daylight per week
-                during winter to regulate serotonin and circadian alignment.
-                LumosWalk rewards accumulated weekly exposure while driving
-                sustainable foot traffic to independent Łódź cafés.
-              </p>
-            </div>
-          </div>
-
-          <div className="bento-3col">
-            {/* Tier 01: 1 hour */}
-            <article className="editorial-card surface-white">
-              <div>
-                <div className="card-num-tag">Tier 01 · 1 hour / week</div>
-                <h3 className="card-serif-title">
-                  Free Hot Dog or Hot Drink at Żabka
-                </h3>
-                <p className="card-body-text">
-                  Two 30-minute sunlit walks across your workweek. Provides quick, accessible motivation right around the corner in over 120 stores across Łódź.
-                </p>
-              </div>
-              <div className="dashed-voucher-pill">
-                <span>
-                  <strong>Żabka Café</strong> · code <strong>ZABKA-1HR-HOTDOG</strong>
-                </span>
-              </div>
-            </article>
-
-            {/* Tier 02: 2 hours */}
-            <article className="editorial-card surface-gold">
-              <div>
-                <div className="card-num-tag">
-                  Tier 02 · 2 hours / week
-                </div>
-                <h3 className="card-serif-title">
-                  -30% Warm Winter Latte at Drukarz
-                </h3>
-                <p className="card-body-text" style={{ color: '#0f172a' }}>
-                  Four steady afternoon walks to recharge your circadian rhythm. Redeemed at Drukarz Café (Piotrkowska 102).
-                </p>
-              </div>
-              <div
-                className="dashed-voucher-pill"
-                style={{ borderColor: '#0f172a', background: '#ffffff' }}
-              >
-                <span>
-                  <strong>Drukarz Café (Piotrkowska 102)</strong> · code{' '}
-                  <strong>LUMOS-2HR-LATTE</strong>
-                </span>
-              </div>
-            </article>
-
-            {/* Tier 03: 3 hours */}
-            <article className="editorial-card surface-sand">
-              <div>
-                <div className="card-num-tag">Tier 03 · 3 hours / week (Clinical Target)</div>
-                <h3 className="card-serif-title">
-                  Free Fresh Cinnamon Roll + Tea
-                </h3>
-                <p className="card-body-text">
-                  Our core weekly target (~25 mins per day) proven to combat Winter Blues. Enjoy a freshly baked cinnamon roll and spiced winter tea at Owoce i Warzywa (Traugutta 1).
-                </p>
-              </div>
-              <div className="dashed-voucher-pill">
-                <span>
-                  <strong>Owoce i Warzywa (Traugutta 1)</strong> · code{' '}
-                  <strong>LUMOS-3HR-ROLL</strong>
-                </span>
-              </div>
-            </article>
           </div>
         </div>
       </section>
