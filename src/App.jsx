@@ -151,9 +151,7 @@ export default function App() {
               when it is trapped in freezing building shadows.{' '}
               <strong>LumosWalk</strong> uses 3D urban shadow geometry and live
               solar forecasts to guide you along sunlit paths, pinpoint unshaded
-              benches at any hour, and turn your{' '}
-              <strong>3-hour weekly sunlight bank</strong> into local Łódź
-              coffee.
+              benches at any hour, and earn rewards at your favorite local Łódź cafés.
             </p>
 
             <div className="hero-cta-row">
@@ -195,7 +193,7 @@ export default function App() {
                 <div className="hero-mini-num">03 · Mobile Preview</div>
                 <div className="hero-mini-title">Real App Screens</div>
                 <div className="hero-mini-meta">
-                  Navigation, map pins &amp; 3h rewards
+                  Navigation, map pins &amp; local rewards
                 </div>
               </a>
             </div>
@@ -220,10 +218,8 @@ export default function App() {
               <div className="eyebrow-solar">
                 CLINICAL EVIDENCE · MENTAL HEALTH · URBAN COMMERCE
               </div>
-              <h2 className="section-serif-heading">
-                Daylight is medicine your body
-                <br />
-                cannot synthesize indoors.
+              <h2 className="section-serif-heading" style={{ maxWidth: '820px', textWrap: 'balance' }}>
+                Daylight is medicine that your body cannot synthesize indoors.
               </h2>
               <p className="section-subcopy">
                 Between November and March at latitude 51.7°N (Łódź), daylight drops under 7.5 hours and low-angle winter sun is trapped by dense brick street canyons. Indoor lighting traps our biology in twilight, triggering winter depression (SAD) and freezing downtown street life.
@@ -238,7 +234,7 @@ export default function App() {
               <div>
                 <span className="science-stat-badge">01 · Biological Gap</span>
                 <div className="science-big-stat solar">500 vs. 90,000</div>
-                <h3 className="card-serif-title" style={{ fontSize: '1.42rem' }}>
+                <h3 className="card-serif-title" style={{ fontSize: '1.38rem', textWrap: 'balance' }}>
                   The Indoor Lux Trap
                 </h3>
                 <p className="card-body-text" style={{ fontSize: '0.92rem' }}>
@@ -262,8 +258,8 @@ export default function App() {
               <div>
                 <span className="science-stat-badge">02 · Emotional Reality</span>
                 <div className="science-big-stat" style={{ color: '#92400e' }}>68% Lethargy</div>
-                <h3 className="card-serif-title" style={{ fontSize: '1.42rem' }}>
-                  The Polish “Szaruga” &amp; SAD
+                <h3 className="card-serif-title" style={{ fontSize: '1.38rem', textWrap: 'balance' }}>
+                  Polish “Szaruga” &amp; Winter Blues
                 </h3>
                 <p className="card-body-text" style={{ color: '#0f172a', fontSize: '0.92rem' }}>
                   Sunset arrives at 15:30 in December. Over <strong>68% of Central Europeans</strong> report significant winter fatigue and motivation slumps, with <strong>1 in 5 suffering from Seasonal Affective Disorder</strong>.
@@ -286,8 +282,8 @@ export default function App() {
               <div>
                 <span className="science-stat-badge">03 · Urban Foot Traffic</span>
                 <div className="science-big-stat" style={{ color: '#b45309' }}>-45% Drop</div>
-                <h3 className="card-serif-title" style={{ fontSize: '1.42rem' }}>
-                  The Winter High-Street Slump
+                <h3 className="card-serif-title" style={{ fontSize: '1.38rem', textWrap: 'balance' }}>
+                  Winter Storefront &amp; High-Street Slump
                 </h3>
                 <p className="card-body-text" style={{ fontSize: '0.92rem' }}>
                   When darkness sets in, pedestrian foot traffic along downtown arteries like Piotrkowska drops by nearly half. Citizens rush between cars and heated rooms, creating severe midday revenue slumps for local cafés and bakeries.
@@ -517,17 +513,17 @@ export default function App() {
               </div>
             </article>
 
-            {/* 03 · Sunlight bank */}
+            {/* 03 · Local Rewards */}
             <article className="editorial-card surface-white">
               <div>
-                <div className="card-num-tag">03 · Sunlight bank</div>
+                <div className="card-num-tag">03 · Local Rewards</div>
                 <h3 className="card-serif-title">
-                  Bank minutes, redeem at cafes
+                  Earn rewards at local cafés
                 </h3>
                 <p className="card-body-text">
-                  Walks and geofence-verified soaking sessions add up toward 2h,
-                  3h and 5h weekly goals — presented in a pure wallet with zero
-                  live timer clutter.
+                  Walks and geofence-verified soaking sessions add up to unlock
+                  real rewards at independent neighborhood spots — presented in a
+                  pure wallet with zero live timer clutter.
                 </p>
 
                 <div className="week-strip-7">
